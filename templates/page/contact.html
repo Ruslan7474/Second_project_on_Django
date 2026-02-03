@@ -1,0 +1,123 @@
+{% extends 'base.html' %} {% block content %}
+<style>
+	.contact-page {
+		max-width: 1000px;
+		margin: 40px auto;
+		padding: 30px;
+		font-family: Arial, sans-serif;
+		line-height: 1.8;
+		color: #333;
+	}
+
+	.contact-page h1 {
+		text-align: center;
+		font-size: 2.8rem;
+		color: #2c3e50;
+		margin-bottom: 40px;
+		font-weight: bold;
+	}
+
+	.contact-section {
+		margin-bottom: 40px;
+	}
+
+	.contact-section h2 {
+		font-size: 1.5rem;
+		color: #34495e;
+		margin-bottom: 15px;
+		border-bottom: 3px solid #3498db;
+		padding-bottom: 10px;
+	}
+
+	.contact-page ul {
+		list-style: none;
+		padding: 0;
+		margin: 15px 0 20px 0;
+	}
+
+	.contact-page ul li {
+		padding: 12px 15px;
+		font-size: 1.1rem;
+		background-color: #ecf0f1;
+		margin-bottom: 8px;
+		border-radius: 5px;
+		border-left: 4px solid #3498db;
+	}
+
+	.contact-page a {
+		color: #2980b9;
+		text-decoration: none;
+		font-weight: bold;
+	}
+
+	.contact-page a:hover {
+		text-decoration: underline;
+		color: #1a5276;
+	}
+
+	.email-link {
+		font-size: 1.1rem;
+		padding: 12px 15px;
+		background-color: #ecf0f1;
+		border-radius: 5px;
+		border-left: 4px solid #3498db;
+		display: inline-block;
+		margin: 10px 0;
+	}
+
+	.contact-map {
+		margin-top: 30px;
+		border-radius: 8px;
+		overflow: hidden;
+		box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+	}
+
+	.contact-map iframe {
+		width: 100%;
+		height: 450px;
+		border: 0;
+	}
+</style>
+
+
+<div class="contact-page">
+	<h1>Контакты</h1>
+
+	<!-- Телефоны -->
+	<div class="contact-section">
+		<h2>Телефоны</h2>
+		<ul>
+			<li>
+				<a href="tel:{{ contact.phone_1 }}">{{ contact.phone_1 }}</a>
+			</li>
+			{% if contact.phone_2 %}
+			<li>
+				<a href="tel:{{ contact.phone_2 }}">{{ contact.phone_2 }}</a>
+			</li>
+			{% endif %} 
+			{% if contact.phone_3 %}
+			<li>
+				<a href="tel:{{ contact.phone_3 }}">{{ contact.phone_3 }}</a>
+			</li>
+			{% endif %}
+		</ul>
+	</div>
+
+
+	<div class="contact-section">
+		<h2>Email</h2>
+		<p>
+			<a href="mailto:{{ contact.email }}" class="email-link">{{ contact.email }}</a>
+		</p>
+	</div>
+
+	
+	{% if contact.map_embed %}
+	<div class="contact-section">
+		<h2>Расположение</h2>
+		<div class="contact-map">{{ contact.map_embed|safe }}</div>
+	</div>
+	{% endif %}
+</div>
+
+{% endblock content %}

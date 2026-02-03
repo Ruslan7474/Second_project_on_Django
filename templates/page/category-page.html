@@ -1,0 +1,29 @@
+{%extends "base.html"%} {% block content %}
+<div class="container mt-5">
+	<div class="row">
+		{% for news in news_list %}
+
+		<div class="col-md-4 mb-4">
+			<div class="card h-100">
+				{% if news.image %}
+				<a href="{% url 'news_detail' news.slug %}"><img src="{{ news.image.url }}" class="card-img-top" style="height:250px; object-fit:cover;" alt="{{ news.title }}"/></a>
+				{% else %}
+				<a href="{% url 'news_detail' news.slug %}"><img class="card-img-top" style="height:250px; object-fit:cover;" src="https://bipbap.ru/wp-content/uploads/2017/01/1464729791156456568-450x300.jpg" alt="{{ news.title }}"/></a>
+				{% endif %}
+
+				<div class="card-body d-flex flex-column">
+					<h5 class="card-title">{{ news.title }}</h5>
+					<p class="card-text description" onclick="toggleDescription(this)">
+						{{ news.description|striptags|truncatewords:17 }}
+					</p>
+					<div class="mt-auto">
+						<a href="{% url 'news_detail' news.slug %}" class="btn btn-primary">Перейти</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		{% endfor %}
+	</div>
+</div>
+{% endblock content %}

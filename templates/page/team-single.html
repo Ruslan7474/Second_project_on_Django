@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h2>{{team.name}}</h2>
+    <div class="row">
+
+        <!-- col -->
+
+        <div class="col-lg-8">
+            {% if team.image %}
+            <img style="width: 100%; max-width: 600px; height: auto;" src="{{team.image.url}}" class="card-img-top">
+            {% endif %}
+            <h5 class="card-title">{{team.name}}</h5>
+           <p class="card-text"><strong>{{team.position}}</strong> - {{team.exp}}</p>
+           <p>{{team.biog|safe}}</p>
+           {% if team.imageshotsteam_set.all %}
+           <h4 class="mt-4 mb-3">Фотографии</h4>
+           <div class="row">
+               {% for photo in team.imageshotsteam_set.all %}
+               <div class="col-md-6 col-lg-4 mb-3">
+                   <div class="card">
+                       <img src="{{photo.img.url}}" class="card-img-top" style="height: 250px; object-fit: cover;">
+                       <div class="card-body">
+                           <p class="card-text">{{photo.title}}</p>
+                       </div>
+                   </div>
+               </div>
+               {% endfor %}
+           </div>
+           {% endif %}
+        </div>
+
+        <!-- col --> 
+
+    </div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,131 @@
+<style>
+	* {
+		box-sizing: border-box;
+		font-family: Arial, sans-serif;
+	}
+
+	body {
+		background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+		min-height: 100vh;
+		margin: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.auth-container {
+		width: 100%;
+		max-width: 450px;
+		padding: 20px;
+	}
+
+	.auth-form {
+		background: #fff;
+		padding: 30px;
+		border-radius: 12px;
+		box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+		display: flex;
+		flex-direction: column;
+		gap: 15px;
+	}
+
+	.auth-form h2 {
+		margin: 0 0 10px;
+		text-align: center;
+		color: #333;
+	}
+
+	.auth-form input {
+		padding: 12px 14px;
+		border-radius: 8px;
+		border: 1px solid #ccc;
+		font-size: 15px;
+		transition:
+			border-color 0.2s,
+			box-shadow 0.2s;
+	}
+
+	.auth-form input:focus {
+		outline: none;
+		border-color: #4a90e2;
+		box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
+	}
+
+	.auth-form button {
+		padding: 12px;
+		border: none;
+		border-radius: 8px;
+		background: #4a90e2;
+		color: #fff;
+		font-size: 16px;
+		cursor: pointer;
+		transition:
+			background 0.2s,
+			transform 0.1s;
+	}
+
+	.auth-form button:hover {
+		background: #3a7bd5;
+	}
+
+	.auth-form button:active {
+		transform: scale(0.98);
+	}
+
+	.auth-form a {
+		text-align: center;
+		text-decoration: none;
+		color: #4a90e2;
+		font-size: 14px;
+	}
+
+	.auth-form a:hover {
+		text-decoration: underline;
+	}
+
+	.error {
+		color: #d9534f;
+		background: #fbeaea;
+		padding: 10px;
+		border-radius: 6px;
+		font-size: 14px;
+		text-align: center;
+	}
+
+	
+</style>
+<div class="auth-container">
+	<form method="post" class="auth-form">
+		{% csrf_token %}
+		<h2>Регистрация</h2>
+
+		<input name="username" placeholder="Логин" />
+		<input type="password" name="password1" placeholder="Пароль" />
+		<input type="password" name="password2" placeholder="Повтор пароля" />
+
+		{% if username %}
+		<script>
+			document.addEventListener('DOMContentLoaded', function(){
+				var el = document.querySelector('input[name="username"]');
+				if(el) el.value = "{{ username }}";
+			});
+		</script>
+		{% endif %}
+
+		<button type="submit">Зарегистрироваться</button>
+
+		<a href="{% url 'login' %}">Уже есть аккаунт? Войти</a>
+
+		{% if errors %}
+		<div class="error">
+			<ul style="list-style:none; padding:0; margin:0;">
+				{% for e in errors %}
+				<li>{{ e }}</li>
+				{% endfor %}
+			</ul>
+		</div>
+		{% elif error %}
+		<p class="error">{{ error }}</p>
+		{% endif %}
+	</form>
+</div>
