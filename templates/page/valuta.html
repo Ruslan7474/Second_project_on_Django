@@ -1,0 +1,16 @@
+{%extends "base.html" %}
+
+
+{% block content %}
+
+<h1> Курсы валют (Нацбанк КР)</h1>
+
+<table>
+    <tr><th>Валюта</th><th>Курс к сому</th></tr>
+    <tr><td>USD</td><td>{{ usd }}</td></tr>
+    <tr><td>EUR</td><td>{{ eur }}</td></tr>
+    <tr><td>RUB</td><td>{{ rub }}</td></tr>
+    <tr><td>KZT</td><td>{{ kzt }}</td></tr>
+</table>
+
+{% endblock %}
