@@ -7,7 +7,7 @@ import django_ckeditor_5.fields
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('about', '0002_team_sociallink'),
+        ('about', '0001_initial'),
     ]
 
     operations = [

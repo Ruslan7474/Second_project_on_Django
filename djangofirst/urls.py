@@ -13,4 +13,4 @@ urlpatterns = [
     path('application/', include('application.urls')),
     path('valuta/', valuta_page, name="valuta"),
 ]
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)    

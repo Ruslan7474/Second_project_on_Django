@@ -23,7 +23,7 @@ def get_rates():
     for currency in tree.findall("Currency"):
         code = currency.get("ISOCode")
         if code in currencies:
-            value = currency.find
-            currencies(code) = float(value.replace(',','.'))
+            value = currency.find("Value").text
+            currencies[code] = float(value.replace(',', '.'))
 
         return currencies
