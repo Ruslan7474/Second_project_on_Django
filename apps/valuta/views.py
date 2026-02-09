@@ -10,5 +10,4 @@ def valuta_page(request):
         "rub": rates["RUB"],
         "kzt": rates["KZT"],
     }
-
-    return render(request, "valuta.html, context")
+    return render(request, "page/valuta.html", context)

@@ -20,10 +20,15 @@ def get_rates():
     }
 
 
-    for currency in tree.findall("Currency"):
-        code = currency.get("ISOCode")
+    for currency in tree.findall('.//Currency'):
+        code = currency.get('ISOCode') or currency.get('ISO') or currency.get('Code')
         if code in currencies:
-            value = currency.find("Value").text
-            currencies[code] = float(value.replace(',', '.'))
+            value_elem = currency.find('Value')
+            if value_elem is None or not value_elem.text:
+                continue
+            try:
+                currencies[code] = float(value_elem.text.replace(',', '.'))
+            except ValueError:
+                continue
 
-        return currencies
+    return currencies
