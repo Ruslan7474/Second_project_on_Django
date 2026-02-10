@@ -12,5 +12,6 @@ urlpatterns = [
     path('contacts/', include('apps.contact.urls')),
     path('application/', include('application.urls')),
     path('valuta/', valuta_page, name="valuta"),
+    path('weather/', include('apps.weather.urls')),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)    

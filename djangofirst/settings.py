@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'apps.contact',
     'application',
     'django_ckeditor_5',
+    'apps.weather',
     
 ]
 
