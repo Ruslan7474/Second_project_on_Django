@@ -40,15 +40,11 @@
 									О нас
 								</a>
 								<ul class="dropdown-menu">
-									<li class="nav-item">
-									<a class="nav-link" href="{% url 'aboutFunc' %}">О нас</a>
-									</li>  
+									<li><a class="dropdown-item" href="{% url 'aboutFunc' %}">О нас</a></li>
 									<li><hr class="dropdown-divider"></li>
 									<li><a class="dropdown-item" href="{% url 'teamsFunc' %}">Команда</a></li>
 									<li><a class="dropdown-item" href="{% url 'contacts' %}">Контакты</a></li>
-									<li class="nav-item">
-									<a class="nav-link" href="{% url 'valuta' %}">Курсы валют</a>
-									</li>
+									<li><a class="dropdown-item" href="{% url 'valuta' %}">Курсы валют</a></li>
 								</ul>
 						</li>
 						{% if user.is_authenticated %}
