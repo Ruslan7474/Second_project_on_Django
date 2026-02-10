@@ -108,19 +108,6 @@
     font-weight: 600;
   }
 
-  .map-card {
-    background: #fff;
-    border-radius: 16px;
-    padding: 14px;
-    box-shadow: 0 8px 18px rgba(13, 27, 42, 0.12);
-  }
-
-  .map-image {
-    width: 100%;
-    border-radius: 12px;
-    border: 1px solid #e6eef7;
-  }
-
   .forecast-row {
     display: grid;
     grid-template-columns: repeat(7, minmax(120px, 1fr));
@@ -207,9 +194,6 @@
     <div class="section-grid">
       <section class="panel-tabs">
         <div class="tab">Прогноз погоды на 7 дней</div>
-        <div class="map-card">
-          <img class="map-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Kyrgyzstan_location_map.svg/800px-Kyrgyzstan_location_map.svg.png" alt="Карта Кыргызстана">
-        </div>
         <div class="forecast-row">
           {% for day in forecast %}
           <div class="forecast-card">
